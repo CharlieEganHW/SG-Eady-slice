@@ -29,6 +29,6 @@ See LICENCE.md
 
 This repository was created to accompany the following paper:
 
-* Egan, C.P., Bourne, D.P., Cotter, C.J., Cullen, M.J.P., Pelloni, B., Roper, S.M. & Wilkinson, M. (to appear) A new implementation of the geometric method for solving the Eady slice equations, *Journal of Computational Physics*
+* Egan, C.P., Bourne, D.P., Cotter, C.J., Cullen, M.J.P., Pelloni, B., Roper, S.M. & Wilkinson, M. A new implementation of the geometric method for solving the Eady slice equations, *Journal of Computational Physics*  (to appear)
 
 Please consider citing this paper if you find our code useful.
