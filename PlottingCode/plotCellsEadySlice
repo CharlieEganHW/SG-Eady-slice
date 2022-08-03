@@ -1,0 +1,73 @@
+function plotCellsEadySlice(bx,vfn,colours,time)
+% Function to plot Laguerre cells with specified colours and title
+%
+% Input
+%{
+ bx      - bounding box in the form of limits [xmin ymin xmax ymax]
+ vfn     - Nx3 cell array defining Laguerre tessellation
+ colours - 4x1 cell array defining colour bar:
+           colours{1} - string defining the label for the colour bar
+           colours{2} - 1x3 row vector whose first two entries are the
+                        lower and upper colour limits and whose third
+                        entry defines the distance between ticks
+           colours{3} - Nx1 coloumn vector containing colour values
+ time      - 1x1 array used to write title of plot, time in days
+%}
+    %figure;
+    %clf;
+    
+    [N,~]=size(vfn);
+    
+    bx_length = (bx(3)-bx(1));
+    
+    hold on
+    
+    
+    for i=1:N
+        V = vfn{i,1};
+        if(~isempty(V))
+            patch([V(:,1);V(1,1)],[V(:,2);V(1,2)],colours{3}(i),'EdgeColor','none');     % copy in fundamental domain
+            patch([V(:,1);V(1,1)]-bx_length,[V(:,2);V(1,2)],colours{3}(i),'EdgeColor','none'); % periodic copy to the left
+            patch([V(:,1);V(1,1)]+bx_length,[V(:,2);V(1,2)],colours{3}(i),'EdgeColor','none'); % periodic copy to the right
+        end
+    end
+    day=ceil(time);
+    %title(['Day',' ',num2str(day)],'Interpreter','latex')
+    title(['$t= $',' ',num2str(time),' days'],'Interpreter','latex');
+    
+    % define colourmap    
+    denom = colours{2}(3);
+    ticks = denom*(ceil(colours{2}(1)/denom):floor(colours{2}(2)/denom));
+    caxis([ticks(1),ticks(end)]);
+    %caxis([-40,50])
+    % set up colourbar with ticks at intervals specified by colours{2}(3) 
+    % and spanning range specified by colours{2}(1:2)
+    
+    %if colourbar==true 
+    %%%%%%%%%%%%%%% for plots at multiple times it is useful to have only 
+    %%%%%%%%%%%%%%% one with a colour bar. For this, have colourbar as
+    %%%%%%%%%%%%%%% a boolean input.
+        cbr = colorbar('Ticks',ticks);
+        %cbr.Location = 'southoutside';
+        cbr.Label.Interpreter = 'latex';
+        cbr.Label.String = colours{1};
+        cbr.Label.FontSize = 10;
+        cbr.TickLabelInterpreter = 'latex';
+    %end
+        
+    xticks([bx(1),0,bx(3)])
+    yticks([bx(2),0,bx(4)])
+    
+    xticklabels({'$-L$','$0$','$L$'})
+    yticklabels({'$-H/2$','$0$','$H/2$'})
+    
+    %xlabel(['Longitude',' ','(meters)'],'Interpreter','latex')
+    %ylabel(['Altitude',' ','(meters)'],'Interpreter','latex')
+    xlim([bx(1),bx(3)])
+    ylim([bx(2),bx(4)])
+    
+    set(gca,'FontSize',9,'TickLabelInterpreter','latex')
+    
+    axis square
+    
+end
