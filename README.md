@@ -1,7 +1,7 @@
 # SG-Eady-slice
 MATLAB functions for solving the semi-geostrophic Eady slice equations using the geometric method.
 
-# Getting started
+## Getting started ##
 To use these MATLAB functions you must first install
 
-MATLAB-Voro
+* [MATLAB-Voro](https://github.com/smr29git/MATLAB-Voro)
