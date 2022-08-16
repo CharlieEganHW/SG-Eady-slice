@@ -14,13 +14,6 @@ See the MATLAB live script ``Examples.mlx`` and the corresponding PDF file ``Exa
 
 See LICENCE.md
 
-## Software limitations ##
-
-* The code is limited to 3D (2D code coming soon).
-* The source measure is the Lebesgue measure on a cuboid.
-* The support of the discrete target measure must be contained in the support of the source measure.
-* The transport cost is either the quadratic cost or the periodic quadratic cost.
-
 ## Main contributors ##
 
 * Charlie Egan, Heriot-Watt University and the Maxwell Institute for Mathematical Sciences
